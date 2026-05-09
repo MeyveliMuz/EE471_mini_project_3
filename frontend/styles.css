@@ -1,0 +1,217 @@
+/* RoboMunch — styled to match the Mini-Project-3 PDF mockup */
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  background: radial-gradient(ellipse at top, #1a0f0a 0%, #0d0806 70%, #050302 100%);
+  color: #e8d9c4;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+.app {
+  max-width: 420px;
+  margin: 0 auto;
+  padding: 18px 20px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* ---------- HEADER ---------- */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 6px 4px 0;
+}
+
+.logo {
+  margin: 0;
+  font-weight: 700;
+  font-size: 28px;
+  letter-spacing: 2px;
+  font-family: 'Cormorant Garamond', serif;
+}
+.logo-robo  { color: #f4e6d0; }
+.logo-munch { color: #e89441; margin-left: 6px; }
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #c46a1f;
+  box-shadow: 0 0 12px rgba(232, 148, 65, 0.35);
+  background: #2a160d;
+}
+
+/* ---------- SECTION TITLES ---------- */
+.section-title {
+  text-align: center;
+  margin: 6px 0 2px;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 26px;
+  color: #e8d9c4;
+  letter-spacing: 0.5px;
+}
+
+/* ---------- PANEL BASE ---------- */
+.image-box,
+.chat-box,
+.pill {
+  background: linear-gradient(145deg, #4a2a1a, #2a160d);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 180, 120, 0.18),
+    inset 0 0 0 1px rgba(0, 0, 0, 0.4),
+    0 6px 22px rgba(0, 0, 0, 0.65);
+}
+
+/* ---------- IMAGE OUTPUT BOX ---------- */
+.image-box {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 22px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#output-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+#output-image:not([src]),
+#output-image[src=""] { visibility: hidden; }
+
+.spinner {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 4px solid rgba(232, 148, 65, 0.25);
+  border-top-color: #e89441;
+  animation: spin 0.9s linear infinite;
+  position: absolute;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ---------- PILL (rounded input container) ---------- */
+.pill {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border-radius: 999px;
+  height: 56px;
+  padding: 0 8px 0 22px;
+}
+
+.pill input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #f4e6d0;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 18px;
+  padding: 0 8px;
+}
+.pill input::placeholder {
+  color: #b89878;
+  font-style: italic;
+  opacity: 0.85;
+}
+
+.prompt-pill { margin-top: 2px; }
+
+/* ---------- CIRCLE BUTTONS ---------- */
+.circle-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff8ec;
+  background: linear-gradient(145deg, #f0a256, #c46a1f);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 220, 180, 0.5),
+    0 3px 10px rgba(0, 0, 0, 0.55);
+  transition: transform 0.08s ease, box-shadow 0.15s ease;
+  flex-shrink: 0;
+}
+.circle-btn svg { width: 20px; height: 20px; }
+.circle-btn:hover { transform: translateY(-1px); }
+.circle-btn:active { transform: translateY(1px); }
+.circle-btn:disabled { opacity: 0.55; cursor: progress; }
+
+.circle-btn.small { width: 36px; height: 36px; }
+.circle-btn.small svg { width: 18px; height: 18px; }
+
+.circle-btn.mic { width: 44px; height: 44px; }
+.circle-btn.mic.recording {
+  background: linear-gradient(145deg, #ff5b3a, #c8221b);
+  animation: pulse 1.1s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 91, 58, 0.6); }
+  50%      { box-shadow: 0 0 0 8px rgba(255, 91, 58, 0); }
+}
+
+/* ---------- CHAT BOX ---------- */
+.chat-box {
+  border-radius: 22px;
+  padding: 16px 18px;
+  min-height: 130px;
+  max-height: 220px;
+  overflow-y: auto;
+  font-style: italic;
+  font-size: 16px;
+  line-height: 1.4;
+  color: #e8d9c4;
+}
+.chat-box .msg { margin-bottom: 10px; }
+.chat-box .msg:last-child { margin-bottom: 0; }
+.chat-box .label {
+  font-weight: 700;
+  font-style: normal;
+  letter-spacing: 0.5px;
+  margin-right: 4px;
+}
+.chat-box .label.you   { color: #f4e6d0; }
+.chat-box .label.munch { color: #e89441; }
+
+.chat-box::-webkit-scrollbar { width: 6px; }
+.chat-box::-webkit-scrollbar-thumb {
+  background: rgba(232, 148, 65, 0.4);
+  border-radius: 3px;
+}
+
+/* ---------- CHAT INPUT ROW ---------- */
+.chat-input-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.chat-pill {
+  flex: 1;
+  height: 52px;
+  padding: 0 6px 0 20px;
+}
+.chat-pill input { font-size: 17px; }
+
+/* ---------- MOBILE ---------- */
+@media (max-width: 460px) {
+  .app { padding: 14px 14px 20px; }
+  .logo { font-size: 24px; }
+  .section-title { font-size: 23px; }
+}
